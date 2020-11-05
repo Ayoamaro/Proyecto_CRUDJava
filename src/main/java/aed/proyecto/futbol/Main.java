@@ -14,11 +14,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		while (exit == false) {
-			menuServer();
+			menuServeridores();
 		}
 	}
 	
-	private static void menuServer() {
+	private static void menuServeridores() {
 		try {
 			System.out.println("Bienvenido al Proyecto Java de 'dbFutbol'");
 			System.out.println("Elige una Base de datos");
@@ -51,7 +51,7 @@ public class Main {
 			}
 			
 		} catch(Exception ex) {
-			System.out.println("Volvio a ocurrir");
+			System.out.println("ERROR: " + ex);
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class Main {
 			}
 			
 		} catch(Exception ex) {
-			System.out.println("Volvio a ocurrir");
+			System.out.println("ERROR: " + ex);
 		}
 	}
 }
