@@ -14,11 +14,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		while (exit == false) {
-			menuServeridores();
+			menuServidores();
 		}
 	}
 	
-	private static void menuServeridores() {
+	private static void menuServidores() {
 		try {
 			System.out.println("Bienvenido al Proyecto Java de 'dbFutbol'");
 			System.out.println("Elige una Base de datos");
@@ -71,10 +71,10 @@ public class Main {
 
 			switch (select) {
 				case "1":
-					AccesoBD.visualizarEquipos();
+					FunctionsMySQL.visualizarEquipos();
 					break;
 				case "2":
-					AccesoBD.insertarEquipo();
+					FunctionsMySQL.insertarEquipo();
 					break;
 				case "3":
 					break;

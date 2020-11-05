@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Ayoze Amaro
  *
  */
-public class AccesoBD {
+public class FunctionsMySQL {
 	
 	private static String url = "jdbc:mysql://localhost:3306/dbfutbol";
 	private static String usr = "root";
