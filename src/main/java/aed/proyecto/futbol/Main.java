@@ -30,22 +30,19 @@ public class Main {
 			String select = sc.nextLine();
 
 			switch (select) {
-				case "1": {
-					menuOpciones();
+				case "1":
+					menuOpciones("MySQL");
 					break;
-				}
-				case "2": {
+				case "2":
 					break;
-				}
-				case "3": {
+				case "3":
+					menuOpciones("SQLServer");
 					break;
-				}
-				case "4": {
+				case "4":
 					exit = true;
 					System.out.println("");
 					System.out.println("¡ADIÓS!");
 					break;
-				}
 				default:
 					break;
 			}
@@ -55,45 +52,75 @@ public class Main {
 		}
 	}
 	
-	private static void menuOpciones() {
+	private static void menuOpciones(String servidor) {
 		try {
 			System.out.println("");
 			System.out.println("-------------------------");
 			System.out.println("¿Qué deseas hacer?");
 			System.out.println("1. Listar equipos");
 			System.out.println("2. Insertar un equipo");
-			System.out.println("3. Borrar un equipo");
-			System.out.println("4. Modificar un equipo");
+			System.out.println("3. Modificar un equipo");
+			System.out.println("4. Borrar un equipo");
 			System.out.println("5. Utilizar procedimientos");
 			System.out.println("6. Salir");
 			System.out.print("Opción: ");
 			String select = sc.nextLine();
 
-			switch (select) {
-				case "1":
-					FunctionsMySQL.visualizarEquipos();
-					break;
-				case "2":
-					FunctionsMySQL.insertarEquipo();
-					break;
-				case "3":
-					break;
-				case "4":
-					break;
-				case "5":
-					break;
-				case "6": {
-					exit = true;
-					System.out.println("");
-					System.out.println("¡ADIÓS!");
-					break;
+			if (servidor == "MySQL") {
+				switch (select) {
+					case "1":
+						FunctionsMySQL.visualizarEquipos();
+						break;
+					case "2":
+						FunctionsMySQL.insertarEquipo();
+						break;
+					case "3":
+						FunctionsMySQL.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codModificar = sc.nextLine();
+						FunctionsMySQL.modificarEquipo(codModificar);
+						break;
+					case "4":
+						FunctionsMySQL.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codBorrado = sc.nextLine();
+						FunctionsMySQL.borrarEquipo(codBorrado);
+						break;
+					case "5":
+						break;
+					case "6":
+						exit = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+					default:
+						exit = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
 				}
-				default:
-					exit = true;
-					System.out.println("");
-					System.out.println("¡ADIÓS!");
-					break;
 			}
+			
+			else if (servidor == "SQLServer") {
+				switch (select) {
+					case "1":
+						FunctionsSQLServer.visualizarEquipos();
+						break;
+					case "2":
+						break;
+					case "3":
+						break;
+					case "4":
+						break;
+					case "5":
+						break;
+					case "6":
+						break;
+					default:
+						break;
+				}
+			}
+	
 			
 		} catch(Exception ex) {
 			System.out.println("ERROR: " + ex);
