@@ -200,4 +200,20 @@ public class FunctionsMySQL {
 			System.out.println(ex.getMessage());
 		}
 	}
+	
+	public static void insertarProcedimiento() {
+		
+	}
+	
+	public static void listarDNI() {
+		
+	}
+	
+	public static void futbolistasActivos() {
+		
+	}
+	
+	public static void mesesJugados() {
+		
+	}
 }

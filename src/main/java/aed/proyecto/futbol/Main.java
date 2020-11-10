@@ -8,12 +8,12 @@ import java.util.Scanner;
  */
 public class Main {
 
-	private static boolean exit = false;
+	private static boolean salir = false;
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 
-		while (exit == false) {
+		while (salir == false) {
 			menuServidores();
 		}
 	}
@@ -21,7 +21,7 @@ public class Main {
 	private static void menuServidores() {
 		try {
 			System.out.println("Bienvenido al Proyecto Java de 'dbFutbol'");
-			System.out.println("Elige una Base de datos");
+			System.out.println("ELIGE LA BASE DE DATOS");
 			System.out.println("1. MySQL");
 			System.out.println("2. Access");
 			System.out.println("3. SQL Server");
@@ -39,7 +39,7 @@ public class Main {
 					menuOpciones("SQLServer");
 					break;
 				case "4":
-					exit = true;
+					salir = true;
 					System.out.println("");
 					System.out.println("¡ADIÓS!");
 					break;
@@ -56,7 +56,7 @@ public class Main {
 		try {
 			System.out.println("");
 			System.out.println("-------------------------");
-			System.out.println("¿Qué deseas hacer?");
+			System.out.println("OPCIONES DISPONIBLES");
 			System.out.println("1. Listar equipos");
 			System.out.println("2. Insertar un equipo");
 			System.out.println("3. Modificar un equipo");
@@ -87,24 +87,78 @@ public class Main {
 						FunctionsMySQL.borrarEquipo(codBorrado);
 						break;
 					case "5":
+						menuProcedimientos("MySQL");
 						break;
 					case "6":
-						exit = true;
+						salir = true;
 						System.out.println("");
 						System.out.println("¡ADIÓS!");
 						break;
 					default:
-						exit = true;
+						salir = true;
 						System.out.println("");
 						System.out.println("¡ADIÓS!");
 						break;
 				}
 			}
-			
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":
 						FunctionsSQLServer.visualizarEquipos();
+						break;
+					case "2":
+						FunctionsSQLServer.insertarEquipo();;
+						break;
+					case "3":
+						FunctionsSQLServer.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codModificar = sc.nextLine();
+						FunctionsSQLServer.modificarEquipo(codModificar);
+						break;
+					case "4":
+						FunctionsSQLServer.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codBorrado = sc.nextLine();
+						FunctionsSQLServer.borrarEquipo(codBorrado);
+						break;
+					case "5":
+						menuProcedimientos("SQLServer");
+						break;
+					case "6":
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+					default:
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+				}
+			}
+	
+			
+		} catch(Exception ex) {
+			System.out.println("ERROR: " + ex);
+		}
+	}
+	
+	private static void menuProcedimientos(String servidor) {
+		try {
+			System.out.println("");
+			System.out.println("-------------------------");
+			System.out.println("PROCEDIMIENTOS");
+			System.out.println("1. Insertar un equipo");
+			System.out.println("2. Listar contratos según DNI");
+			System.out.println("3. Futbolistas activos en un equipo");
+			System.out.println("4. Cantidad de meses jugados por un jugador");
+			System.out.println("5. Salir");
+			System.out.print("Opción: ");
+			String select = sc.nextLine();
+
+			if (servidor == "MySQL") {
+				switch (select) {
+					case "1":
 						break;
 					case "2":
 						break;
@@ -115,12 +169,41 @@ public class Main {
 					case "5":
 						break;
 					case "6":
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
 						break;
 					default:
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
 						break;
 				}
 			}
-	
+			else if (servidor == "SQLServer") {
+				switch (select) {
+					case "1":
+						break;
+					case "2":
+						break;
+					case "3":
+						break;
+					case "4":
+						break;
+					case "5":
+						break;
+					case "6":
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+					default:
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+				}
+			}
 			
 		} catch(Exception ex) {
 			System.out.println("ERROR: " + ex);
