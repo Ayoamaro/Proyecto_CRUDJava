@@ -36,7 +36,7 @@ public class FunctionsMySQL {
 				if (internacional == 1) { tipoInternacional = "SÍ"; }
 				else { tipoInternacional = "NO"; }
 				
-				System.out.println("{" + codEquipo + "}:" + " " + nomEquipo + " | " + nombreLiga + " | " + localidad + " | " + tipoInternacional);
+				System.out.println("{" + codEquipo + "}:" + " " + nomEquipo + " - " + nombreLiga + " - " + localidad + " - " + tipoInternacional);
 			}
 			System.out.println("-------------------------");
 			System.out.println("");

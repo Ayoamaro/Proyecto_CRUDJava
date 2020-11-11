@@ -109,10 +109,19 @@ public class Main {
 						FunctionsAccess.visualizarEquipos();
 						break;
 					case "2":
+						FunctionsAccess.insertarEquipo();
 						break;
 					case "3":
+						FunctionsAccess.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codModificar = sc.nextLine();
+						FunctionsAccess.modificarEquipo(codModificar);
 						break;
 					case "4":
+						FunctionsAccess.visualizarEquipos();
+						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						String codBorrado = sc.nextLine();
+						FunctionsAccess.borrarEquipo(codBorrado);
 						break;
 					case "5":
 						break;
@@ -208,6 +217,32 @@ public class Main {
 						break;
 				}
 			}
+			
+			else if (servidor == "Access") {
+				switch (select) {
+					case "1":
+						break;
+					case "2":
+						break;
+					case "3":
+						break;
+					case "4":
+						break;
+					case "5":
+						break;
+					case "6":
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+					default:
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+				}
+			}
+			
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":
