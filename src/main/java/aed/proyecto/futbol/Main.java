@@ -34,6 +34,7 @@ public class Main {
 					menuOpciones("MySQL");
 					break;
 				case "2":
+					menuOpciones("Access");
 					break;
 				case "3":
 					menuOpciones("SQLServer");
@@ -101,6 +102,33 @@ public class Main {
 						break;
 				}
 			}
+			
+			else if (servidor == "Access") {
+				switch (select) {
+					case "1":
+						FunctionsAccess.visualizarEquipos();
+						break;
+					case "2":
+						break;
+					case "3":
+						break;
+					case "4":
+						break;
+					case "5":
+						break;
+					case "6":
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+					default:
+						salir = true;
+						System.out.println("");
+						System.out.println("¡ADIÓS!");
+						break;
+				}
+			}
+			
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":

@@ -19,13 +19,11 @@
     		<artifactId>mysql-connector-java</artifactId>
     		<version>8.0.22</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/net.sf.ucanaccess/ucanaccess -->
 		<dependency>
     		<groupId>net.sf.ucanaccess</groupId>
     		<artifactId>ucanaccess</artifactId>
     		<version>5.0.0</version>
 		</dependency>
-
 		<dependency>
     		<groupId>com.microsoft.sqlserver</groupId>
     		<artifactId>mssql-jdbc</artifactId>
@@ -46,5 +44,5 @@
       		</plugin>
     	</plugins>
   	</build>
-  <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+  	
 </project>
