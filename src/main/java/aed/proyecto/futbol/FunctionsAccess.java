@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class FunctionsAccess {
 
-	private static String nom = "C:\\Users\\Ayoze\\Documents\\dbFutbol.accdb";
+	private static String nom = "C:\\Users\\Ayoze\\eclipse-workspace\\Proyecto_CRUDJava\\src\\main\\resources\\report\\dbFutbol.accdb";
 	private static String url = "jdbc:ucanaccess://";
 	private static String tipoInternacional;
 	
