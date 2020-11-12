@@ -124,6 +124,12 @@ public class Main {
 						FunctionsAccess.borrarEquipo(codBorrado);
 						break;
 					case "5":
+						System.out.println("");
+						System.out.println("-------------------------");
+						System.out.println("Lo siento, pero Access no dispone de procedimientos.");
+						System.out.println("Vuelva a intentarlo...");
+						System.out.println("-------------------------");
+						System.out.println("");
 						break;
 					case "6":
 						salir = true;
@@ -194,31 +200,6 @@ public class Main {
 			String select = sc.nextLine();
 
 			if (servidor == "MySQL") {
-				switch (select) {
-					case "1":
-						break;
-					case "2":
-						break;
-					case "3":
-						break;
-					case "4":
-						break;
-					case "5":
-						break;
-					case "6":
-						salir = true;
-						System.out.println("");
-						System.out.println("¡ADIÓS!");
-						break;
-					default:
-						salir = true;
-						System.out.println("");
-						System.out.println("¡ADIÓS!");
-						break;
-				}
-			}
-			
-			else if (servidor == "Access") {
 				switch (select) {
 					case "1":
 						break;
