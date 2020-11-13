@@ -35,11 +35,11 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/ucanaccess-5.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/loader/ucanload.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/lib/commons-lang3-3.8.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/lib/hsqldb-2.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ayoze/Downloads/UCanAccess-5.0.0-bin/lib/jackcess-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/ucanaccess-5.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/loader/ucanload.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/lib/commons-lang3-3.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/lib/hsqldb-2.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ayoze/.m2/repository/UCanAccess-5.0.0-bin/lib/jackcess-3.0.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

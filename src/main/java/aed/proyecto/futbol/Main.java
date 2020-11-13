@@ -47,7 +47,6 @@ public class Main {
 				default:
 					break;
 			}
-			
 		} catch(Exception ex) {
 			System.out.println("ERROR: " + ex);
 		}
@@ -102,7 +101,6 @@ public class Main {
 						break;
 				}
 			}
-			
 			else if (servidor == "Access") {
 				switch (select) {
 					case "1":
@@ -143,7 +141,6 @@ public class Main {
 						break;
 				}
 			}
-			
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":
@@ -179,8 +176,6 @@ public class Main {
 						break;
 				}
 			}
-	
-			
 		} catch(Exception ex) {
 			System.out.println("ERROR: " + ex);
 		}
@@ -191,8 +186,8 @@ public class Main {
 			System.out.println("");
 			System.out.println("-------------------------");
 			System.out.println("PROCEDIMIENTOS");
-			System.out.println("1. Insertar un equipo");
-			System.out.println("2. Listar contratos según DNI");
+			System.out.println("1. Listar contratos según DNI");
+			System.out.println("2. Insertar un equipo");
 			System.out.println("3. Futbolistas activos en un equipo");
 			System.out.println("4. Cantidad de meses jugados por un jugador");
 			System.out.println("5. Salir");
@@ -202,16 +197,18 @@ public class Main {
 			if (servidor == "MySQL") {
 				switch (select) {
 					case "1":
+						FunctionsMySQL.listarDNI();
 						break;
 					case "2":
+						FunctionsMySQL.insertarProcedimiento();
 						break;
 					case "3":
+						FunctionsMySQL.futbolistasActivos();
 						break;
 					case "4":
+						FunctionsMySQL.mesesJugados();
 						break;
 					case "5":
-						break;
-					case "6":
 						salir = true;
 						System.out.println("");
 						System.out.println("¡ADIÓS!");
@@ -223,7 +220,6 @@ public class Main {
 						break;
 				}
 			}
-			
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":
@@ -235,8 +231,6 @@ public class Main {
 					case "4":
 						break;
 					case "5":
-						break;
-					case "6":
 						salir = true;
 						System.out.println("");
 						System.out.println("¡ADIÓS!");
@@ -247,8 +241,7 @@ public class Main {
 						System.out.println("¡ADIÓS!");
 						break;
 				}
-			}
-			
+			}	
 		} catch(Exception ex) {
 			System.out.println("ERROR: " + ex);
 		}
