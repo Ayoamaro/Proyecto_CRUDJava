@@ -73,18 +73,20 @@ public class FunctionsSQLServer {
 			System.out.print("Localidad: ");
 			String localidad = sc.nextLine();
 			System.out.print("Internacional (SÍ o NO): ");
-			String internacional = sc.nextLine();
+			String newInternacional = sc.nextLine();
 			System.out.println("-------------------------");
 			System.out.println("");
 			
-			if (internacional.toLowerCase().equals("si")) {
-				internacional = "1";
+			if (newInternacional.toLowerCase().equals("si")) {
+				newInternacional = "1";
+			} else {
+				newInternacional = "0";
 			}
 
 			consult.setString(1, nomEquipo);
 			consult.setString(2, codLiga);
 			consult.setString(3, localidad);
-			consult.setString(4, internacional);
+			consult.setString(4, newInternacional);
 			consult.executeUpdate();
 			con.close();
 			
