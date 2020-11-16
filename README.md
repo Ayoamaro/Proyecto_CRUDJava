@@ -4,21 +4,21 @@ Haz un proyecto en Java accediendo a la base de datos de dbFutbol.
 
 El proyecto tendrá un menú principal en el cual elegiremos la base de datos con la cual trabajaremos (MySQL, SQL Server o Microsoft Access).
 
-(IMAGEN)
+![](https://github.com/Ayoamaro/Proyecto_CRUDJava/blob/main/docs/images/menu_servers.PNG?raw=true)
 
 La visualización deberás utilizar una presentación visual o de texto, y obligatoriamente utiliza las sentencias preparadas. Los datos de los servidores solo se escribirán una vez.
 
 - Visualiza todos los datos de la tabla equipos visualizando también el nombre de la liga
 
-  (IMAGEN)
+  ![](https://github.com/Ayoamaro/Proyecto_CRUDJava/blob/main/docs/images/listado.PNG?raw=true)
 
 - Inserta equipo. Haz un combo con las posibles ligas en presentación visual. Comprueba que los datos a introducir son correctos.
 
-  (IMAGEN)
+  ![](https://github.com/Ayoamaro/Proyecto_CRUDJava/blob/main/docs/images/insertar.PNG?raw=true)
 
 - Elimina un equipo, si el equipo a eliminar tiene contratos preguntaremos si queremos eliminarlas todos (equipos y todos sus contratos) o no.
 
-  (IMAGEN)
+  ![](https://github.com/Ayoamaro/Proyecto_CRUDJava/blob/main/docs/images/borrado.PNG?raw=true)
 
 - Modifica todos los datos de los equipos, el código del equipo no se podrá modificar. Deberás visualizar los datos que ya tiene.
 
