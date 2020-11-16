@@ -20,6 +20,10 @@ public class FunctionsSQLServer {
 	private static String tipoInternacional;
 	private static Scanner sc = new Scanner(System.in);
 	
+	/*
+	 * --- MOSTRAR ---
+	 * Mostrado de todos los equipos de la base de datos (SQL Server)
+	 */
 	public static void visualizarEquipos() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -49,6 +53,10 @@ public class FunctionsSQLServer {
 		}
 	}
 	
+	/*
+	 * --- INSERTAR ---
+	 * Insercción de un nuevo equipo en la base de datos (SQL Server)
+	 */
 	public static void insertarEquipo() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -85,7 +93,10 @@ public class FunctionsSQLServer {
 		}
 	}
 	
-
+	/*
+	 * --- MODIFICACIÓN ---
+	 * Modificación de un equipo existente en la base de datos (SQL Server)
+	 */
 	public static void modificarEquipo(String codEquipo) {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -137,6 +148,10 @@ public class FunctionsSQLServer {
 		}
 	}
 
+	/*
+	 * --- BORRAR ---
+	 * Borrado de un equipo existente en la base de datos (SQL Server)
+	 */
 	public static void borrarEquipo(String codEquipo) {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -206,6 +221,12 @@ public class FunctionsSQLServer {
 		}
 	}
 	
+	/*
+	 * --- 1. PROCEDIMIENTOS ---
+	 * Crear un procedimiento almacenado que liste todos los contratos de cierto futbolista pasando por parámetro 
+	 * de entrada el dni o nie del futbolista, ordenados por fecha de inicio. Los datos a visualizar serán: 
+	 * Código de contrato, nombre de equipo, nombre de liga, fecha de inicio, fecha de fin, precio anual y precio de recisión del contrato. 
+	 */
 	public static void listarDNI() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -239,6 +260,13 @@ public class FunctionsSQLServer {
 		}
 	}
 	
+	/*
+	 * --- 2. PROCEDIMIENTOS ---
+	 * Crear un procedimiento almacenado que inserte un equipo, de modo que se le pase como parámetros todos los datos. 
+	 * Comprobar que el código de liga pasado exista en la tabla ligas. En caso de que no exista la liga que no se inserte.
+	 * 		- Devolver en un parámetro de salida: 0 si la liga no existe y 1 si la liga existe.
+	 * 		- Devolver en otro parámetro de salida: 0 si el equipo no se insertó y 1 si la inserción fue correcta. 
+	 */
 	public static void insertarProcedimiento() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -282,6 +310,12 @@ public class FunctionsSQLServer {
 		}
 	}
 	
+	/*
+	 * --- 3. PROCEDIMIENTOS ---
+	 * Procedimiento almacenado que indicándole un equipo, precio anual y un precio recisión, devuelva dos parámetros. 
+	 * En un parámetro de salida la cantidad de futbolistas en activo (con contrato vigente) que hay en dicho equipo. 
+	 * En otro parámetro de salida la cantidad de futbolistas en activo de dicho equipo con precio anual y de recisión menor de los indicados.
+	 */
 	public static void futbolistasActivos() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
@@ -316,6 +350,10 @@ public class FunctionsSQLServer {
 		}
 	}
 	
+	/*
+	 * --- 4. FUNCIÓN ---
+	 * Función que dándole un DNI o NIE de un futbolista nos devuelva en número de meses total que ha estado en equipos.
+	 */
 	public static void mesesJugados() {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);

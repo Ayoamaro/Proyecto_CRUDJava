@@ -15,8 +15,12 @@ public class FunctionsAccess {
 	private static String nom = "C:\\Users\\Ayoze\\eclipse-workspace\\Proyecto_CRUDJava\\src\\main\\resources\\report\\dbFutbol.accdb";
 	private static String url = "jdbc:ucanaccess://";
 	private static String tipoInternacional;
+	private static Scanner sc = new Scanner(System.in);
 	
-	
+	/*
+	 * --- MOSTRAR ---
+	 * Mostrado de todos los equipos de la base de datos (Access)
+	 */
 	public static void visualizarEquipos() {
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -47,9 +51,11 @@ public class FunctionsAccess {
 		}
 	}
 	
+	/*
+	 * --- INSERTAR ---
+	 * Insercción de un nuevo equipo en la base de datos (Access)
+	 */
 	public static void insertarEquipo() {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con = DriverManager.getConnection(url + nom);
@@ -87,10 +93,11 @@ public class FunctionsAccess {
 		}
 	}
 	
-
+	/*
+	 * --- MODIFICACIÓN ---
+	 * Modificación de un equipo existente en la base de datos (Access)
+	 */
 	public static void modificarEquipo(String codEquipo) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con = DriverManager.getConnection(url + nom);
@@ -134,9 +141,11 @@ public class FunctionsAccess {
 		}
 	}
 
+	/*
+	 * --- BORRAR ---
+	 * Borrado de un equipo existente en la base de datos (Access)
+	 */
 	public static void borrarEquipo(String codEquipo) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con = DriverManager.getConnection(url + nom);
