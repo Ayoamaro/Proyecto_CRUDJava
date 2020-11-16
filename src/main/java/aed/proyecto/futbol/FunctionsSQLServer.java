@@ -1,9 +1,11 @@
 package aed.proyecto.futbol;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.Scanner;
 
 /**
@@ -16,6 +18,7 @@ public class FunctionsSQLServer {
 	private static String usr = "sa_cliente";
 	private static String pswd = "2020informatica";
 	private static String tipoInternacional;
+	private static Scanner sc = new Scanner(System.in);
 	
 	public static void visualizarEquipos() {
 		try {
@@ -47,8 +50,6 @@ public class FunctionsSQLServer {
 	}
 	
 	public static void insertarEquipo() {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
 			String sql = "INSERT INTO equipos (nomEquipo, codLiga, localidad, internacional) VALUES (?,?,?,?)";
@@ -86,8 +87,6 @@ public class FunctionsSQLServer {
 	
 
 	public static void modificarEquipo(String codEquipo) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
 			String sql = "UPDATE equipos SET nomEquipo=?, codLiga=?, localidad=?, internacional=? WHERE codEquipo = " + codEquipo;
@@ -139,8 +138,6 @@ public class FunctionsSQLServer {
 	}
 
 	public static void borrarEquipo(String codEquipo) {
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
 
@@ -209,20 +206,142 @@ public class FunctionsSQLServer {
 		}
 	}
 	
-	public static void insertarProcedimiento() {
-		
+	public static void listarDNI() {
+		try {
+			Connection con = DriverManager.getConnection(url, usr, pswd);
+			CallableStatement consult = con.prepareCall("EXEC dbo.ejerc_1 @codDnionie = ?");
+			
+			System.out.println("");
+			System.out.println("-------------------------");
+			System.out.println("CONTRATOS SEGÚN DNI (PROCEDIMIENTO)");
+			System.out.print("Introduzca el DNI: ");
+			String newDni = sc.nextLine();	
+			consult.setString(1, newDni);
+			ResultSet result = consult.executeQuery();
+			System.out.println("");
+			while (result.next()) {
+	            String codContrato = result.getString("codContrato");
+	            String nomEquipo = result.getString("nomEquipo");
+	            String nomLiga = result.getString("nomLiga");
+	            String fechaInicio = result.getString("fechaInicio");
+	            String fechaFin = result.getString("fechaFin");
+	            String precioAnual = result.getString("precioAnual");
+	            String precioResicion = result.getString("precioResicion");    
+
+	            System.out.println("{" + codContrato + "}:" + " " + nomEquipo + " - " + nomLiga + " - " + fechaInicio + " - " + fechaFin + " - " + precioAnual + " - " + precioResicion);
+	        }
+			System.out.println("-------------------------");
+			System.out.println("");
+			
+			con.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 	
-	public static void listarDNI() {
-		
+	public static void insertarProcedimiento() {
+		try {
+			Connection con = DriverManager.getConnection(url, usr, pswd);
+			CallableStatement consult = con.prepareCall("exec dbo.ejerc_2 @nomEquipo = ?, @codLiga = ?, @localidad = ?, @internacional = ?, @ligaExiste = ?, @insercion = ?");
+
+			System.out.println("");
+			System.out.println("-------------------------");
+			System.out.println("INSERCIÓN DE UN EQUIPO (PROCEDIMIENTO)");
+			System.out.print("Nombre de equipo: ");
+			String nomEquipo = sc.nextLine();
+			System.out.print("Código de Liga: ");
+			String codLiga = sc.nextLine();
+			System.out.print("Localidad: ");
+			String localidad = sc.nextLine();
+			System.out.print("Internacional (SÍ o NO): ");
+			String newInternacional = sc.nextLine();
+			System.out.println("-------------------------");
+
+			if (newInternacional.toLowerCase().equals("si")) {
+				newInternacional = "1";
+			} else {
+				newInternacional = "0";
+			}
+			
+			consult.setString(1, nomEquipo);
+			consult.setString(2, codLiga);
+			consult.setString(3, localidad);
+			consult.setString(4, newInternacional);
+			consult.registerOutParameter(5, Types.TINYINT);
+			consult.registerOutParameter(6, Types.TINYINT);
+
+			consult.execute();
+			System.out.println("Existe liga: " + consult.getString(5));
+			System.out.println("Inserción: " + consult.getString(6));
+			System.out.println("-------------------------");
+			System.out.println("");
+
+			con.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	public static void futbolistasActivos() {
-		
+		try {
+			Connection con = DriverManager.getConnection(url, usr, pswd);
+			CallableStatement consult = con.prepareCall("exec dbo.ejerc_3 @codEquipo = ?, @precioAnual = ?, @precioResicion = ?, @futbolistasPreciso = ?, @futbolistasActivo = ?");
+			
+			System.out.println("");
+			System.out.println("-------------------------");
+			System.out.println("FUTBOLISTAS ACTIVOS EN UN EQUIPO (PROCEDIMIENTO)");
+			System.out.print("Código de equipo: ");
+			String codEquipo = sc.nextLine();
+			System.out.print("Precio anual: ");
+			String precioAnual = sc.nextLine();
+			System.out.print("Precio rescisión: ");
+			String precioResicion = sc.nextLine();
+			
+			consult.setString(1, codEquipo);
+			consult.setInt(2, Integer.parseInt(precioAnual));
+			consult.setInt(3, Integer.parseInt(precioResicion));
+			consult.registerOutParameter(4, Types.INTEGER);
+			consult.registerOutParameter(5, Types.INTEGER);
+			
+			consult.execute();
+			System.out.println("");
+			System.out.println("Contratos activos: " + consult.getString(4));
+			System.out.println("Precios menores: " + consult.getString(5));
+			System.out.println("-------------------------");
+			System.out.println("");
+			
+			con.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	public static void mesesJugados() {
-		
+		try {
+			Connection con = DriverManager.getConnection(url, usr, pswd);
+
+			String sql = "SELECT dbo.ejerc_4 (?) as meses";
+			PreparedStatement consult = con.prepareStatement(sql);
+			
+			System.out.println("");
+			System.out.println("-------------------------");
+			System.out.println("MESES JUGADOS POR UN JUGADOR (PROCEDIMIENTO)");
+			System.out.print("Introduzca el DNI: ");
+			String newDni = sc.nextLine();	
+			consult.setString(1, newDni);
+			ResultSet result = consult.executeQuery();
+			System.out.println("");
+			
+			if (result.next()) {
+				System.out.println("El jugador ha jugado: " + result.getString(1) + " meses");
+			}
+			System.out.println("-------------------------");
+			System.out.println("");
+			
+			con.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 }

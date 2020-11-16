@@ -223,12 +223,16 @@ public class Main {
 			else if (servidor == "SQLServer") {
 				switch (select) {
 					case "1":
+						FunctionsSQLServer.listarDNI();
 						break;
 					case "2":
+						FunctionsSQLServer.insertarProcedimiento();
 						break;
 					case "3":
+						FunctionsSQLServer.futbolistasActivos();
 						break;
 					case "4":
+						FunctionsSQLServer.mesesJugados();
 						break;
 					case "5":
 						salir = true;
