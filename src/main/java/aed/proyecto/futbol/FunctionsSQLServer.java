@@ -100,29 +100,37 @@ public class FunctionsSQLServer {
 			if (result.next()) {
 				System.out.println("");
 				System.out.println("-------------------------");
-				System.out.println("MODIFICACIÓN DE UN EQUIPO");
-				System.out.print("Nombre de equipo (Actual: " + result.getString("nomEquipo") + "): ");
-				String newNomEquipo = sc.nextLine();
-				System.out.print("Código de liga (Actual: " + result.getString("codLiga") + "): ");
-				String newCodLiga = sc.nextLine();
-				System.out.print("Localidad (Actual: " + result.getString("localidad") + "): ");
-				String newLocalidad = sc.nextLine();
-				System.out.print("Internacional (SÍ o NO) (Actual: " + result.getString("internacional") + "): ");
-				String newInternacional = sc.nextLine();
-				System.out.println("-------------------------");
-				System.out.println("");
-				
-				if (newInternacional.toLowerCase().equals("si")) {
-					newInternacional = "1";
-				} else if (newInternacional.toLowerCase().equals("no")) {
-					newInternacional = "0";
-				}
-
-				consult.setString(1, newNomEquipo);
-				consult.setString(2, newCodLiga);
-				consult.setString(3, newLocalidad);
-				consult.setString(4, newInternacional);
+				System.out.println("EQUIPO ACTUAL");
+				System.out.println("Nombre de equipo: " + result.getString("nomEquipo"));
+				System.out.println("Código de liga: " + result.getString("codLiga"));
+				System.out.println("Localidad: " + result.getString("localidad"));
+				System.out.println("Internacional: " + result.getString("internacional"));
 			}
+			
+			System.out.println("-------------------------");
+			System.out.println("MODIFICACIÓN DE UN EQUIPO");
+			System.out.print("Nombre de equipo: ");
+			String newNomEquipo = sc.nextLine();
+			System.out.print("Código de liga: ");
+			String newCodLiga = sc.nextLine();
+			System.out.print("Localidad: ");
+			String newLocalidad = sc.nextLine();
+			System.out.print("Internacional (SÍ o NO): ");
+			String newInternacional = sc.nextLine();
+			System.out.println("-------------------------");
+			System.out.println("");
+			
+			if (newInternacional.toLowerCase().equals("si")) {
+				newInternacional = "1";
+			} else {
+				newInternacional = "0";
+			}
+
+			consult.setString(1, newNomEquipo);
+			consult.setString(2, newCodLiga);
+			consult.setString(3, newLocalidad);
+			consult.setString(4, newInternacional);
+			
 			consult.executeUpdate();
 			con.close();
 		} catch (Exception ex) {

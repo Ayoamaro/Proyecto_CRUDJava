@@ -61,7 +61,7 @@ public class Main {
 			System.out.println("2. Insertar un equipo");
 			System.out.println("3. Modificar un equipo");
 			System.out.println("4. Borrar un equipo");
-			System.out.println("5. Utilizar procedimientos");
+			System.out.println("5. Utilizar procedimientos (MySQL y SQL Server)");
 			System.out.println("6. Salir");
 			System.out.print("Opción: ");
 			String select = sc.nextLine();
@@ -76,13 +76,13 @@ public class Main {
 						break;
 					case "3":
 						FunctionsMySQL.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a modificar: ");
 						String codModificar = sc.nextLine();
 						FunctionsMySQL.modificarEquipo(codModificar);
 						break;
 					case "4":
 						FunctionsMySQL.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a borrar: ");
 						String codBorrado = sc.nextLine();
 						FunctionsMySQL.borrarEquipo(codBorrado);
 						break;
@@ -111,13 +111,13 @@ public class Main {
 						break;
 					case "3":
 						FunctionsAccess.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a modificar: ");
 						String codModificar = sc.nextLine();
 						FunctionsAccess.modificarEquipo(codModificar);
 						break;
 					case "4":
 						FunctionsAccess.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a borrar: ");
 						String codBorrado = sc.nextLine();
 						FunctionsAccess.borrarEquipo(codBorrado);
 						break;
@@ -151,13 +151,13 @@ public class Main {
 						break;
 					case "3":
 						FunctionsSQLServer.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a modificar: ");
 						String codModificar = sc.nextLine();
 						FunctionsSQLServer.modificarEquipo(codModificar);
 						break;
 					case "4":
 						FunctionsSQLServer.visualizarEquipos();
-						System.out.print("¿Qué equipo quieres borrar? (0 para cancelar): ");
+						System.out.print("Elige el equipo a borrar: ");
 						String codBorrado = sc.nextLine();
 						FunctionsSQLServer.borrarEquipo(codBorrado);
 						break;

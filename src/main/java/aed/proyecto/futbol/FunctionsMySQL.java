@@ -92,39 +92,47 @@ public class FunctionsMySQL {
 		try {
 			Connection con = DriverManager.getConnection(url, usr, pswd);
 			String sql = "UPDATE equipos SET nomEquipo=?, codLiga=?, localidad=?, internacional=? WHERE codEquipo = " + codEquipo;
-			PreparedStatement consulta = con.prepareStatement(sql);
+			PreparedStatement consult = con.prepareStatement(sql);
 
 			String sql2 = "SELECT * FROM equipos WHERE codEquipo = " + codEquipo;
 			PreparedStatement modificar = con.prepareStatement(sql2);
-			ResultSet resultado = modificar.executeQuery();
+			ResultSet result = modificar.executeQuery();
 
-			if (resultado.next()) {
+			if (result.next()) {
 				System.out.println("");
 				System.out.println("-------------------------");
-				System.out.println("MODIFICACIÓN DE UN EQUIPO");
-				System.out.print("Nombre de equipo (Actual: " + resultado.getString("nomEquipo") + "): ");
-				String newNomEquipo = sc.nextLine();
-				System.out.print("Código de liga (Actual: " + resultado.getString("codLiga") + "): ");
-				String newCodLiga = sc.nextLine();
-				System.out.print("Localidad (Actual: " + resultado.getString("localidad") + "): ");
-				String newLocalidad = sc.nextLine();
-				System.out.print("Internacional (SÍ o NO) (Actual: " + resultado.getString("internacional") + "): ");
-				String newInternacional = sc.nextLine();
-				System.out.println("-------------------------");
-				System.out.println("");
-				
-				if (newInternacional.toLowerCase().equals("si")) {
-					newInternacional = "1";
-				} else {
-					newInternacional = "0";
-				}
-
-				consulta.setString(1, newNomEquipo);
-				consulta.setString(2, newCodLiga);
-				consulta.setString(3, newLocalidad);
-				consulta.setString(4, newInternacional);
+				System.out.println("EQUIPO ACTUAL");
+				System.out.println("Nombre de equipo: " + result.getString("nomEquipo"));
+				System.out.println("Código de liga: " + result.getString("codLiga"));
+				System.out.println("Localidad: " + result.getString("localidad"));
+				System.out.println("Internacional: " + result.getString("internacional"));
 			}
-			consulta.executeUpdate();
+			
+			System.out.println("-------------------------");
+			System.out.println("MODIFICACIÓN DE UN EQUIPO");
+			System.out.print("Nombre de equipo: ");
+			String newNomEquipo = sc.nextLine();
+			System.out.print("Código de liga: ");
+			String newCodLiga = sc.nextLine();
+			System.out.print("Localidad: ");
+			String newLocalidad = sc.nextLine();
+			System.out.print("Internacional (SÍ o NO): ");
+			String newInternacional = sc.nextLine();
+			System.out.println("-------------------------");
+			System.out.println("");
+			
+			if (newInternacional.toLowerCase().equals("si")) {
+				newInternacional = "1";
+			} else {
+				newInternacional = "0";
+			}
+
+			consult.setString(1, newNomEquipo);
+			consult.setString(2, newCodLiga);
+			consult.setString(3, newLocalidad);
+			consult.setString(4, newInternacional);
+			
+			consult.executeUpdate();
 			con.close();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
